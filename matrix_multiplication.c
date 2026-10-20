@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-void citire(int* m, int* n, int *p)
+void citire(int* m, int* n, int* p)
 {
 	printf("Introdu nr de linii pentru mat A: ");
 	scanf("%d", m);
@@ -11,7 +11,7 @@ void citire(int* m, int* n, int *p)
 	scanf("%d", p);
 }
 
-void citireMat(int m, int n,int p, int a[101][101], int b[101][101])
+void citireMat(int m, int n, int p, int a[101][101], int b[101][101])
 {
 	int i, j;
 	for (i = 1; i <= m; i++)
@@ -23,7 +23,7 @@ void citireMat(int m, int n,int p, int a[101][101], int b[101][101])
 		}
 	}
 	printf("\n");
-	printf("A = ");
+	printf("A = \n");
 	for (i = 1; i <= m; i++)
 	{
 		for (j = 1; j <= n; j++)
@@ -39,12 +39,12 @@ void citireMat(int m, int n,int p, int a[101][101], int b[101][101])
 	{
 		for (j = 1; j <= p; j++)
 		{
-			printf("a[%d][%d] = ", i, j);
+			printf("b[%d][%d] = ", i, j);
 			scanf("%d", &b[i][j]);
 		}
 	}
 	printf("\n");
-	printf("B = ");
+	printf("B = \n");
 	for (i = 1; i <= n; i++)
 	{
 		for (j = 1; j <= p; j++)
@@ -57,25 +57,26 @@ void citireMat(int m, int n,int p, int a[101][101], int b[101][101])
 	printf("\n");
 }
 
-void rezolvare(int m, int n,int p, int a[101][101],int b[101][101])
+void rezolvare(int m, int n, int p, int a[101][101], int b[101][101])
 {
-	int i, j, k, c[101][101] = {0};
+	int i, j, k, c[101][101] = { 0 };
 	for (i = 1; i <= m; i++)
 	{
 		for (j = 1; j <= p; j++)
 		{
 			for (k = 1; k <= n; k++)
-				c[i][j] = a[i][k] * b[k][j];
+			{
+				c[i][j] += a[i][k] * b[k][j];
+			}
 		}
 	}
-	printf("Matricea rezultanta din inmultirea lui A si B este: ");
-	printf("\n");
-	printf("C = ");
+	printf("Matricea rezultanta din inmultirea lui A si B este: \n");
+	printf("C = \n");
 	for (i = 1; i <= m; i++)
 	{
 		for (j = 1; j <= p; j++)
 		{
-			if(i != 1 && j == 1) printf("    ");
+			if (i != 1 && j == 1) printf("    ");
 			printf("%d ", c[i][j]);
 		}
 		printf("\n");
